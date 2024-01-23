@@ -4,34 +4,48 @@ import styles from '../../styles/home.module.scss'
 import { Busca } from '@/components/Busca';
 import { Previsao } from '@/components/Previsao';
 import { ClimaActual } from '@/components/ClimaActual';
+import { MainContainer } from '../../styles/AppStyles'
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 
 export default function Home() {
 
   const [cidade, setCidade] = useState("");
   const [clima, setClima] = useState([])
-  const [previsao, setPrevisao] = useState([])
-  const apikey = process.env.VITE_API_KEY;
+  const [previsaoDias, setPrevisaoDias] = useState([])
+  const [previsaoHoras, setPrevisaoHoras] = useState([])
+  const apikey = process.env.NEXT_PUBLIC_API_KEY;
 
   console.log(apikey);
 
   const buscarClima = async () => {
     try {
-      const respostaClma = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cidade}&aqi=no`)
-      setClima(respostaClma.data)
+      const respostaClima = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cidade}&aqi=no`)
+      const respostaPrevisao = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${cidade}&days=7&aqi=no&alerts=no`)
+      setClima(respostaClima.data)
+      setPrevisaoDias(respostaPrevisao.data.forecast.forecastday.slice(1, 6))
+      setPrevisaoHoras(respostaPrevisao.data.forecast.forecastday?.[0].hour.slice(0, 5))
     } catch (error) {
       console.log("Erro ao buscar clima: ", error)
     }
+
   };
   console.log(clima)
+  console.log(previsaoDias)
+  //console.log(previsaoHoras)
 
   return (
     <div>
       <h2>Condicoes climaticas!</h2>
       <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
-      <ClimaActual />
-      <Previsao />
+      <MainContainer>
+        <ClimaActual clima={clima} />
+        <Previsao previsoesHoras={previsaoHoras} previsoesDias={previsaoDias} />
+      
+      </MainContainer>
+      
     </div>
   )
 

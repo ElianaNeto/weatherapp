@@ -1,0 +1,32 @@
+.containerPrevisao {
+  width:70%;
+  float: right;
+  height: 550px;
+  background-color: #100E1D;
+
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin-left: 50px;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+}
+
+.tempContainer {
+  span {
+    margin: 4px;
+  }
+}
