@@ -4,17 +4,93 @@
   float: left;
   height: 500px;
   background-color: #989dc7;
+  text-align: center;
+
+}
+
+.tempDiv {
+  display: flex;
+  align-items: baseline;
+  text-align: center;
+  width: 300px;
+  margin-left: 20%;
+  margin-top: 10px;
+
+
+  .tempNum {
+    color: #e7e7eb;
+    font-family: Raleway;
+    font-size: 144px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .tempC {
+    color: #a09fb1;
+    font-family: Raleway;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+.day{
+  color: #88869D;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 20px;
+
+}
+
+.location{
+  color: #88869D;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.locationDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  svg{
+    margin-right: 10px;
+  }
+}
+.conditionName {
+  color: #a09fb1;
+  text-align: center;
+  font-family: Raleway;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .containerActual {
+  background: linear-gradient(
+      rgba(30, 33, 58, 0.95) 100%,
+      rgba(30, 33, 58, 0.95) 100%
+    ),
+    url("../../../public/Cloud-background.png");
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: 150%;
   //border-radius: 5px;
   //box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   // width: 459px;
   //
   background-color: #1e213a;
   width: 459px;
-//max-height: 1023px;
-height: 638px;
+  //max-height: 1023px;
+  height: 638px;
+  text-align: center;
 
   ul {
     list-style: none;
