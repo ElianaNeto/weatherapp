@@ -1,10 +1,10 @@
 import { useState, useEffect, } from 'react';
 import axios from 'axios';
 import styles from '../../styles/home.module.scss'
+
 import { Busca } from '@/components/Busca';
 import { Previsao } from '@/components/Previsao';
 import { ClimaActual } from '@/components/ClimaActual';
-import { MainContainer } from '../../styles/AppStyles'
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -37,16 +37,12 @@ export default function Home() {
   //console.log(previsaoHoras)
 
   return (
-    <div>
-      <h2>Condicoes climaticas!</h2>
-      <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
-      <MainContainer>
+    <div className={styles.mainContaner}>
+      <div className={styles.secondContainer}>
+        <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
         <ClimaActual clima={clima} />
-        <Previsao previsoesHoras={previsaoHoras} previsoesDias={previsaoDias} />
-      
-      </MainContainer>
-      
+      </div>
+      <Previsao previsoesHoras={previsaoHoras} previsoesDias={previsaoDias} />
     </div>
   )
-
 }

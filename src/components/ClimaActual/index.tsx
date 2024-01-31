@@ -39,7 +39,9 @@ export function ClimaActual({ clima }: ClimaActualProps) {
           <p>{clima.current.condition.text}</p>
         </>
       ) : (
-        <p>Sem dados a apresentar</p>
+          <div className={styles.containerActualDefault}>
+            <p>Sem dados a apresentar</p>
+        </div>
       )}
     </div>
   )

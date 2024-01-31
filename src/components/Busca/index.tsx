@@ -1,4 +1,6 @@
 import React from 'react'
+import styles from './styles.module.scss'
+
 
 interface BuscaProps {
   cidade: string;
@@ -8,7 +10,7 @@ interface BuscaProps {
 
 export function Busca({ cidade, setCidade, buscarClima }: BuscaProps) {
   return (
-    <div>
+    <div className={styles.buscaContainer}>
       <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" placeholder='Digite uma cidade ...' />
       <button onClick={buscarClima}>Buscar</button>
     </div>
