@@ -15,11 +15,12 @@ dotenv.config();
 export default function Home() {
 
   const [cidade, setCidade] = useState("");
-  const [clima, setClima] = useState([])
+  const [clima, setClima] = useState({})
   const [previsaoDias, setPrevisaoDias] = useState([])
   const [previsaoHoras, setPrevisaoHoras] = useState([])
   const [showBusca, setShowBusca] = useState(false);
   const apikey = process.env.NEXT_PUBLIC_API_KEY;
+
 
   console.log(apikey);
 
