@@ -1,20 +1,37 @@
-.buscaContainer{
+.buscaContainer {
   background-color: #1e213a;
   height: 50px;
+  margin-top: 56px;
+  margin-left: 50px;
+  input {
+    border: 1px solid #e7e7eb;
+    width: 268px;
+    height: 48px;
+    background: transparent;
+  }
+  .busca {
+    width: 86px;
+    height: 48px;
+    background-color: #3c47e9;
+    margin-left: 10px;
+    font-family: "Raleway", sans-serif;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+  }
 }
-
-.realLocation{
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;  
-  background-color: rgba(255, 255, 255, 0.2);
-  
-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-border: none;
-border-radius: 50%;
-svg{
-  width: 24px;
-  height: 24px;
-  color:#E7E7EB;
-}
+.btn {
+  border: none;
+  background: transparent;
+  width: 32px;
+  height: 32px;
+  float: right;
+  margin-right: 40px;
+  svg {
+    width: 32px;
+    height: 32px;
+    color: #e7e7eb;
+  }
 }

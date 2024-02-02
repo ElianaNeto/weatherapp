@@ -1,9 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   outline: 0;
+}
+
+.buscaDiv {
+  display: flex;
+  align-items: center;
+  // background-color: blueviolet;
+  justify-content: space-around;
+  margin-top: 56px;
+}
+
+.modal-main {
+  //position: fixed;
+  //background: white;
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  width: 459px;
+  height: 694px;
+}
+
+.modal.display-block {
+  display: block;
+}
+
+.modal.display-none {
+  display: none;
 }
 
 :root {
@@ -37,9 +63,9 @@ textarea,
 select,
 button {
   //font: 400 1rem sans-serif; //1rem =16px
-  font:"Raleway", sans-serif;
- /* font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
+  //font:"Raleway", sans-serif;
+  font-family: "Raleway", sans-serif;
+  /*font-optical-sizing: auto;
   font-weight: <weight>;
   font-style: normal;*/
 }

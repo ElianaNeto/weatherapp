@@ -5,6 +5,8 @@ import styles from '../../styles/home.module.scss'
 import { Busca } from '@/components/Busca';
 import { Previsao } from '@/components/Previsao';
 import { ClimaActual } from '@/components/ClimaActual';
+import { MdMyLocation } from "react-icons/md";
+
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -16,9 +18,15 @@ export default function Home() {
   const [clima, setClima] = useState([])
   const [previsaoDias, setPrevisaoDias] = useState([])
   const [previsaoHoras, setPrevisaoHoras] = useState([])
+  const [showBusca, setShowBusca] = useState(false);
   const apikey = process.env.NEXT_PUBLIC_API_KEY;
 
   console.log(apikey);
+
+  const handleBusca = () => {
+    setShowBusca(!showBusca);
+  }
+
 
   const buscarClima = async () => {
     try {
@@ -27,6 +35,7 @@ export default function Home() {
       setClima(respostaClima.data)
       setPrevisaoDias(respostaPrevisao.data.forecast.forecastday.slice(1, 6))
       setPrevisaoHoras(respostaPrevisao.data.forecast.forecastday?.[0].hour.slice(0, 5))
+      setShowBusca(false)
     } catch (error) {
       console.log("Erro ao buscar clima: ", error)
     }
@@ -39,8 +48,20 @@ export default function Home() {
   return (
     <div className={styles.mainContaner}>
       <div className={styles.secondContainer}>
-        <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
-        <ClimaActual clima={clima} />
+        <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} open={showBusca} onClose={handleBusca} />
+        <div className={`${"modal"} ${!showBusca ? "display-block" : "display-none"}`}>
+          <div className='buscaDiv'>
+            <button className={styles.btnShowBusca} onClick={handleBusca}>Seach for places</button>
+            <button className={styles.realLocation}><MdMyLocation /></button>
+          </div>
+
+        </div>
+        {
+          showBusca === false && (
+            <ClimaActual clima={clima} />
+          )
+        }
+
       </div>
       <Previsao previsoesHoras={previsaoHoras} previsoesDias={previsaoDias} />
     </div>

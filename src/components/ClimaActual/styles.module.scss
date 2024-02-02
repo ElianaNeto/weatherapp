@@ -1,10 +1,16 @@
 .containerActualDefault {
   width: 459px;
-  //width: 100%;
   float: left;
-  height: 500px;
-  background-color: #989dc7;
+  height: 655px;
+
+  //background-color: #989dc7;
   text-align: center;
+  align-items: center;
+   p{
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 50%;
+   }
 
 }
 
@@ -19,7 +25,7 @@
 
   .tempNum {
     color: #e7e7eb;
-    font-family: Raleway;
+    font-family: "Raleway", sans-serif;
     font-size: 144px;
     font-style: normal;
     font-weight: 500;
@@ -27,7 +33,7 @@
   }
   .tempC {
     color: #a09fb1;
-    font-family: Raleway;
+    font-family: "Raleway", sans-serif;
     font-size: 48px;
     font-style: normal;
     font-weight: 500;
@@ -36,7 +42,7 @@
 }
 .day{
   color: #88869D;
-  font-family: Raleway;
+  font-family: "Raleway", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -47,7 +53,7 @@
 
 .location{
   color: #88869D;
-  font-family: Raleway;
+  font-family: "Raleway", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -66,7 +72,7 @@
 .conditionName {
   color: #a09fb1;
   text-align: center;
-  font-family: Raleway;
+  font-family: "Raleway", sans-serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 600;
@@ -89,7 +95,7 @@
   background-color: #1e213a;
   width: 459px;
   //max-height: 1023px;
-  height: 638px;
+  height: 655px;
   text-align: center;
 
   ul {

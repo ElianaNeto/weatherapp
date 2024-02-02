@@ -84,7 +84,7 @@ console.log(dayOfWeek); // Output: Wednesday, 31 January
         </>
       ) : (
         <div className={styles.containerActualDefault}>
-          <p>Sem dados a apresentar</p>
+          <p>Sem dados a apresentar do clima actual</p>
         </div>
       )}
     </div>

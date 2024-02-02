@@ -1,6 +1,5 @@
-
-.mainContaner{
-//background: linear-gradient(to bottom, #89cff0, #005c99);
+.mainContaner {
+  //background: linear-gradient(to bottom, #89cff0, #005c99);
   //color: #fff;
   display: flex;
   //height: 100vh;
@@ -10,11 +9,39 @@
   padding: 0;
   margin: 0;
   outline: 0;
+}
+
+.secondContainer {
+  width: 459px;
+  float: left;
+  //background-color: aquamarine;
+  background-color: #1e213a;
 
 }
 
-.secondContainer{
-  width: 459px;
-  float: left;
-  background-color: aquamarine;
+.realLocation {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border: none;
+  border-radius: 50%;
+  svg {
+    width: 24px;
+    height: 24px;
+    color: #e7e7eb;
+  }
+}
+
+.btnShowBusca {
+  width: 161px;
+  height: 40px;
+  background-color: #6e707a;
+  color: #e7e7eb;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  line-height: 18.78px;
+  border: none;
 }
