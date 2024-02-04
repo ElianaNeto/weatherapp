@@ -36,7 +36,7 @@ export default function Home() {
 
       //usar a localizaco
       const respostaDef = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}&aqi=no`)
-      const respostaPrevisaoDef = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`)
+      const respostaPrevisaoDef = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${lat},${lon}&days=10&aqi=no&alerts=no`)
 
       console.log(respostaDef.data)
       setCidade(respostaDef.data.location.name);

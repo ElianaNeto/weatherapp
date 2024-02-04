@@ -65,7 +65,8 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
 
 
           <div className={styles.windDir}>
-            <div><FaLocationArrow /></div>
+            <div
+              style={{ transform: `rotate(${clima.current?.wind_degree}deg)` }}><FaLocationArrow /></div>
 
             <p>{clima.current?.wind_dir}</p>
           </div>

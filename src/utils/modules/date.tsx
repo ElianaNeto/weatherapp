@@ -32,3 +32,15 @@ export function removeDot(number: number): number {
   //return number.split('.')[0];
   return Math.trunc(number)
 }
+
+
+function windDirectionTo16Point(windDirection: number): string {
+  const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+  const index = Math.round((windDirection % 360) / 22.5);
+  return directions[index % 16];
+}
+
+// Example usage:
+const windDirection = 120; // Wind direction in degrees (0 to 360)
+const compassDirection = windDirectionTo16Point(windDirection);
+console.log(compassDirection); // Output: 'ESE'

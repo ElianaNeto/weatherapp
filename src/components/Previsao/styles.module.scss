@@ -141,7 +141,14 @@
           color: #e7e7eb;
           width: 17px;
           height: 17px;
-          rotate: 150deg;
+          //rotate: 150deg;
+          transform-origin: center; /* Set the rotation origin to the center of the element */
+          //transform: rotate(157.5deg); /* Start rotation from 157.5 degrees */
+          transition: transform 0.5s ease; 
+        }
+
+        svg.rotated{
+          transform: rotate(202.5deg); 
         }
       }
     }
