@@ -15,7 +15,7 @@ dotenv.config();
 export default function Home() {
 
   const [cidade, setCidade] = useState("");
-  const [clima, setClima] = useState({})
+  const [clima, setClima] = useState({});
   const [previsaoDias, setPrevisaoDias] = useState([])
   const [previsaoHoras, setPrevisaoHoras] = useState([])
   const [showBusca, setShowBusca] = useState(false);
@@ -28,22 +28,28 @@ export default function Home() {
     setShowBusca(!showBusca);
   }
 
-
-  useEffect(() => {
-
+  const handleLocation = async () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       console.log(position)
       const lat = position.coords.latitude
       const lon = position.coords.longitude
 
       //usar a localizaco
-      const resposta = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}&aqi=no`)
-      console.log(resposta.data)
-      setCidade(resposta.data.location.name);
-      setClima(resposta.data)
+      const respostaDef = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}&aqi=no`)
+      const respostaPrevisaoDef = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`)
+
+      console.log(respostaDef.data)
+      setCidade(respostaDef.data.location.name);
+      setClima(respostaDef.data)
+      setPrevisaoDias(respostaPrevisaoDef.data.forecast.forecastday.slice(1, 6))
+      setPrevisaoHoras(respostaPrevisaoDef.data.forecast.forecastday?.[0].hour.slice(0, 5))
 
     })
+  }
 
+
+  useEffect(() => {
+    handleLocation();
   }, [apikey])
 
 
@@ -71,7 +77,7 @@ export default function Home() {
         <div className={`${"modal"} ${!showBusca ? "display-block" : "display-none"}`}>
           <div className='buscaDiv'>
             <button className={styles.btnShowBusca} onClick={handleBusca}>Seach for places</button>
-            <button className={styles.realLocation}><MdMyLocation /></button>
+            <button className={styles.realLocation} onClick={handleLocation}><MdMyLocation /></button>
           </div>
 
         </div>
@@ -82,7 +88,7 @@ export default function Home() {
         }
 
       </div>
-      <Previsao previsoesHoras={previsaoHoras} previsoesDias={previsaoDias} />
+      <Previsao previsoesHoras={previsaoHoras} previsoesDias={previsaoDias} clima={clima} />
     </div>
   )
 }
