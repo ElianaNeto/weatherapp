@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import styles from './styles.module.scss'
 import { FaLocationDot } from "react-icons/fa6";
+import night from '../../../public/cloudy-night-3.svg'
 
 
 interface Condition {

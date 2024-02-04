@@ -29,6 +29,24 @@ export default function Home() {
   }
 
 
+  useEffect(() => {
+
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      console.log(position)
+      const lat = position.coords.latitude
+      const lon = position.coords.longitude
+
+      //usar a localizaco
+      const resposta = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}&aqi=no`)
+      console.log(resposta.data)
+      setCidade(resposta.data.location.name);
+      setClima(resposta.data)
+
+    })
+
+  }, [apikey])
+
+
   const buscarClima = async () => {
     try {
       const respostaClima = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cidade}&aqi=no`)
