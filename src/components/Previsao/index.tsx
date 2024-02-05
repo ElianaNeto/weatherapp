@@ -7,7 +7,6 @@ import { FaLocationArrow } from 'react-icons/fa';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
-
 interface PrevisaoHora {
   time: string;
   temp_c: number;
