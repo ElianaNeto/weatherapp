@@ -10,8 +10,7 @@
     padding: 0;
     display: flex;
     margin-left: 120px;
-    margin-top: 50px;
-
+    margin-top: 80px;
     flex-direction: row;
     justify-content: flex-start;
   }
@@ -91,7 +90,8 @@
     text-align: center;
   }
 
-  .windContainer, .humiContainer {
+  .windContainer,
+  .humiContainer {
     width: 328px;
     height: 204px;
     color: #e7e7eb;
@@ -100,7 +100,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
 
     .windmph {
       font-size: 64px;
@@ -144,13 +143,31 @@
           //rotate: 150deg;
           transform-origin: center; /* Set the rotation origin to the center of the element */
           //transform: rotate(157.5deg); /* Start rotation from 157.5 degrees */
-          transition: transform 0.5s ease; 
+          transition: transform 0.5s ease;
         }
 
-        svg.rotated{
-          transform: rotate(202.5deg); 
+        svg.rotated {
+          transform: rotate(202.5deg);
         }
       }
     }
+  }
+}
+
+.tempUnit {
+  float: right;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-right: 100px;
+  display: flex;
+
+  button {
+    width: 40px;
+    height: 40px;
+    background-color: #585676;
+    border: none;
+    border-radius: 54px;
+    color: #e7e7eb;
+    margin-right: 15px;
   }
 }

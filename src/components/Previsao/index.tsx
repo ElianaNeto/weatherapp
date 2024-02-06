@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import styles from './styles.module.scss'
 import { getDayOfWeek, getMonthName, removeDot } from '@/utils/modules/date'
 import { ClimaActualProps } from '../ClimaActual';
 import { FaLocationArrow } from 'react-icons/fa';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { ToggleButton } from 'react-bootstrap';
+import ToggleButton1 from '../ToggleButton1';
 
 
 interface PrevisaoHora {
@@ -21,6 +23,8 @@ interface PrevisaoDia {
   day: {
     maxtemp_c: number;
     mintemp_c: number;
+    maxtemp_f: number;
+    mintemp_f: number;
     condition: {
       icon: string;
       text: string;
@@ -37,19 +41,62 @@ interface PrevisaoProps {
 
 export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps) {
 
+  const [tempUnit, setTempUnit] = useState('tempC');
+
+  function handleChangeTempUnit(temp: string) {
+    setTempUnit(temp === tempUnit ? '' : temp);
+    //setIsActive(prevState => !prevState);
+
+  }
+  console.log(tempUnit)
+
   return (
     <div className={styles.containerPrevisao}>
       {/*<h4>Previsao para os proximos dias</h4>*/}
+      <div className={styles.tempUnit}>
+        <button
+          type="button"
+          className={styles.tempC}
+          onClick={() => handleChangeTempUnit('tempC')}
+          style={{
+            backgroundColor: tempUnit === 'tempC' ? '#E7E7EB' : '#585676',
+            color: tempUnit === 'tempC' ? '#110E3C' : '#e7e7eb'
+          }}
+        >
+          °C
+        </button>
+
+        <button
+          type="button"
+          className={styles.tempF}
+          onClick={() => handleChangeTempUnit('tempF')}
+          style={{
+            backgroundColor: tempUnit === 'tempF' ? '#E7E7EB' : '#585676',
+            color: tempUnit === 'tempF' ? '#110E3C' : '#e7e7eb'
+          }}
+        >°F</button>
+
+      </div>
       <ul>
         { //Proximos dias
           previsoesDias.map((prev, index) => (
+
             <li key={index}>
               <span>{getDayOfWeek(prev.date)} </span>
               <Image src={'https:' + prev.day.condition.icon} alt={prev.day.condition.text} width={64} height={64} />
-              <div className={styles.tempContainer}>
-                <p className={styles.tempMax}>{removeDot(prev.day.maxtemp_c)}°C</p>
-                <p className={styles.tempMin}>{removeDot(prev.day.mintemp_c)}°C</p>
-              </div>
+              {
+                tempUnit === 'tempC' ?
+                  <div className={styles.tempContainer}>
+                  <p className={styles.tempMax}>{removeDot(prev.day.maxtemp_c)}°C</p>
+                  <p className={styles.tempMin}>{removeDot(prev.day.mintemp_c)}°C</p>
+                  </div>
+                  :
+                  <div className={styles.tempContainer}>
+                  <p className={styles.tempMax}>{removeDot(prev.day.maxtemp_f)}°F</p>
+                  <p className={styles.tempMin}>{removeDot(prev.day.mintemp_f)}°F</p>
+                </div>
+              }
+
             </li>
           ))
         }
