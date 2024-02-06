@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Image from 'next/image'
 import styles from './styles.module.scss'
 import { getDayOfWeek, getMonthName, removeDot } from '@/utils/modules/date'
 import { ClimaActualProps } from '../ClimaActual';
 import { FaLocationArrow } from 'react-icons/fa';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { AuthContenxt } from '@/contexts/AuthContext';
 
 
 interface PrevisaoHora {
@@ -39,13 +40,11 @@ interface PrevisaoProps {
 
 export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps) {
 
-  const [tempUnit, setTempUnit] = useState('tempC');
+  // const [tempUnit, setTempUnit] = useState('tempC');
+  const { tempUnit } = useContext(AuthContenxt)
+  const { handleChangeTempUnit } = useContext(AuthContenxt)
 
-  function handleChangeTempUnit(temp: string) {
-    setTempUnit(temp === tempUnit ? '' : temp);
-    //setIsActive(prevState => !prevState);
 
-  }
   console.log(tempUnit)
 
   return (
@@ -85,14 +84,14 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
               {
                 tempUnit === 'tempC' ?
                   <div className={styles.tempContainer}>
-                  <p className={styles.tempMax}>{removeDot(prev.day.maxtemp_c)}°C</p>
-                  <p className={styles.tempMin}>{removeDot(prev.day.mintemp_c)}°C</p>
+                    <p className={styles.tempMax}>{removeDot(prev.day.maxtemp_c)}°C</p>
+                    <p className={styles.tempMin}>{removeDot(prev.day.mintemp_c)}°C</p>
                   </div>
                   :
                   <div className={styles.tempContainer}>
-                  <p className={styles.tempMax}>{removeDot(prev.day.maxtemp_f)}°F</p>
-                  <p className={styles.tempMin}>{removeDot(prev.day.mintemp_f)}°F</p>
-                </div>
+                    <p className={styles.tempMax}>{removeDot(prev.day.maxtemp_f)}°F</p>
+                    <p className={styles.tempMin}>{removeDot(prev.day.mintemp_f)}°F</p>
+                  </div>
               }
 
             </li>

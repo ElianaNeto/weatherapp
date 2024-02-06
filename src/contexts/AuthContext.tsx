@@ -3,7 +3,8 @@ import Router from 'next/router'
 
 
 type AuthContextData = {
-  tempUnit: string
+  tempUnit: string;
+  handleChangeTempUnit: (temp: string) => void;
 }
 
 
@@ -14,23 +15,21 @@ type AuthProviderProps = {
 
 export const AuthContenxt = createContext({} as AuthContextData)
 
-export function handleChangeTempUnit(temp: string) {
-  setTempUnit(temp === tempUnit ? '' : temp);
-  //setIsActive(prevState => !prevState);
-
-}
 
 export function AuthProvider({ children }: AuthProviderProps) {
 
-  const [tempUnit, setTempUnit] = useState('tempC');
-
+  const [tempUnit, setTempUnit] = useState('');
   useEffect(() => {
     setTempUnit('tempC')
-
   }, [])
 
+  function handleChangeTempUnit(temp: string) {
+    setTempUnit(temp === tempUnit ? '' : temp);
+    //setIsActive(prevState => !prevState);
+  }
+
   return (
-    <AuthContenxt.Provider value={{ tempUnit }}>
+    <AuthContenxt.Provider value={{ tempUnit, handleChangeTempUnit }}>
       {children}
     </AuthContenxt.Provider>
   )

@@ -15,6 +15,7 @@ export interface Condition {
 
 export interface CurrentWeather {
   temp_c: number;
+  temp_f: number;
   condition: Condition;
   wind_mph: number;
   wind_kph: number;
@@ -61,11 +62,20 @@ export function ClimaActual({ clima }: ClimaActualProps) {
       {clima.location && clima.current ? (
         <>
           <Image src={'https:' + clima.current.condition.icon} alt={clima.current.condition.text} width={202} height={234} />
+          {
+            tempUnit === 'tempC'
+              ?
+              <div className={styles.tempDiv}>
+                <p className={styles.tempNum}>{removeDot(clima.current.temp_c)}</p>
+                <p className={styles.tempC}>°C</p>
+              </div>
+              :
+              <div className={styles.tempDiv}>
+                <p className={styles.tempNum}>{removeDot(clima.current.temp_f)}</p>
+                <p className={styles.tempC}>°F</p>
+              </div>
+          }
 
-          <div className={styles.tempDiv}>
-            <p className={styles.tempNum}>{removeDot(clima.current.temp_c)}</p>
-            <p className={styles.tempC}>°C</p>
-          </div>
 
           <p className={styles.conditionName}>{clima.current.condition.text}</p>
           <p className={styles.day}>Today • {getDayOfWeek(clima.location.localtime)}</p>
