@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Image from 'next/image'
 import styles from './styles.module.scss'
 import { FaLocationDot } from "react-icons/fa6";
 import night from '../../../public/cloudy-night-3.svg'
 import { getDayOfWeek, getMonthName, removeDot } from '@/utils/modules/date'
+import { AuthContenxt } from '@/contexts/AuthContext';
 
 
 
@@ -51,6 +52,10 @@ export interface ClimaActualProps {
 
 
 export function ClimaActual({ clima }: ClimaActualProps) {
+
+  const { tempUnit } = useContext(AuthContenxt)
+  console.log("cclima actual temp: " + tempUnit)
+
   return (
     <div className={styles.containerActual}>
       {clima.location && clima.current ? (

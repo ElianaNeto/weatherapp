@@ -5,8 +5,6 @@ import { getDayOfWeek, getMonthName, removeDot } from '@/utils/modules/date'
 import { ClimaActualProps } from '../ClimaActual';
 import { FaLocationArrow } from 'react-icons/fa';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { ToggleButton } from 'react-bootstrap';
-import ToggleButton1 from '../ToggleButton1';
 
 
 interface PrevisaoHora {
