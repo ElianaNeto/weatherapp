@@ -81,13 +81,30 @@
   grid-column-gap: 20px;
   grid-row-gap: 20px;
 
-  .titleWind {
+  .weatherTitle {
     font-family: "Raleway", sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 19px;
     letter-spacing: 0em;
     text-align: center;
+  }
+
+  .weatherInfo {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 75px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    span {
+      font-family: Raleway;
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 42px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
   }
 
   .windContainer,
@@ -101,22 +118,7 @@
     flex-direction: column;
     justify-content: space-evenly;
 
-    .windmph {
-      font-size: 64px;
-      font-weight: 700;
-      line-height: 75px;
-      letter-spacing: 0em;
-      text-align: left;
-
-      span {
-        font-family: Raleway;
-        font-size: 36px;
-        font-weight: 500;
-        line-height: 42px;
-        letter-spacing: 0em;
-        text-align: left;
-      }
-    }
+    
     .windDir {
       display: flex;
       align-items: center;
@@ -151,6 +153,18 @@
         }
       }
     }
+  }
+
+  .visibilityContainer,
+  .pressureContainer {
+    width: 328px;
+    height: 159px;
+    color: #e7e7eb;
+    background-color: #1e213a;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
 }
 

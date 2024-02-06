@@ -102,9 +102,9 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
       <h2>Today’s Hightlights </h2>
       <div className={styles.container}>
         <div className={styles.windContainer}>
-          <p className={styles.titleWind}>Wind status</p>
+          <p className={styles.weatherTitle}>Wind status</p>
 
-          <p className={styles.windmph}>{clima.current?.wind_mph} <span>mph</span></p>
+          <p className={styles.weatherInfo}>{clima.current?.wind_mph} <span>mph</span></p>
 
 
           <div className={styles.windDir}>
@@ -117,8 +117,8 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
 
 
         <div className={styles.humiContainer}>
-          <p className={styles.titleWind}>Humidity</p>
-          <p className={styles.windmph}>{clima.current?.humidity} <span>%</span></p>
+          <p className={styles.weatherTitle}>Humidity</p>
+          <p className={styles.weatherInfo}>{clima.current?.humidity} <span>%</span></p>
 
 
           <div className='progressContainer'>
@@ -131,12 +131,20 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
             <ProgressBar now={clima.current?.humidity} />
             <span>%</span>
           </div>
+        </div>
 
+        <div className={styles.visibilityContainer}>
+          <p className={styles.weatherTitle}>Visibility</p>
+          <p className={styles.weatherInfo}>{clima.current?.vis_miles} <span>miles</span></p>
 
 
         </div>
-        <div className={styles.windContainer}>C</div>
-        <div className={styles.windContainer}>D</div>
+        <div className={styles.pressureContainer}>
+          <p className={styles.weatherTitle}>Air Pressure</p>
+          <p className={styles.weatherInfo}>{clima.current?.pressure_mb} <span>mb</span></p>
+
+
+        </div>
       </div>
 
 
