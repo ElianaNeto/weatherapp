@@ -5,8 +5,17 @@ const nextConfig = {}
 
 // next.config.js
 module.exports = {
-  images: {
+  /*images: {
     domains: ['cdn.weatherapi.com'],
+  },*/
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.weatherapi.com',
+        pathname: '**',
+      },
+    ],
   },
 };
 

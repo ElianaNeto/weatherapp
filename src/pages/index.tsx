@@ -1,7 +1,6 @@
+import styles from '../../styles/home.module.scss'
 import { useState, useEffect, } from 'react';
 import axios from 'axios';
-import styles from '../../styles/home.module.scss'
-
 import { Busca } from '@/components/Busca';
 import { Previsao } from '@/components/Previsao';
 import { ClimaActual } from '@/components/ClimaActual';

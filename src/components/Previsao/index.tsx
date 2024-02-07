@@ -101,50 +101,53 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
 
       <h2>Today’s Hightlights </h2>
       <div className={styles.container}>
-        <div className={styles.windContainer}>
-          <p className={styles.weatherTitle}>Wind status</p>
+        <div className={styles.first}>
+          <div className={styles.windContainer}>
+            <p className={styles.weatherTitle}>Wind status</p>
 
-          <p className={styles.weatherInfo}>{clima.current?.wind_mph} <span>mph</span></p>
-
-
-          <div className={styles.windDir}>
-            <div
-              style={{ transform: `rotate(${clima.current?.wind_degree}deg)` }}><FaLocationArrow /></div>
-
-            <p>{clima.current?.wind_dir}</p>
-          </div>
-        </div>
+            <p className={styles.weatherInfo}>{clima.current?.wind_mph} <span>mph</span></p>
 
 
-        <div className={styles.humiContainer}>
-          <p className={styles.weatherTitle}>Humidity</p>
-          <p className={styles.weatherInfo}>{clima.current?.humidity} <span>%</span></p>
+            <div className={styles.windDir}>
+              <div
+                style={{ transform: `rotate(${clima.current?.wind_degree}deg)` }}><FaLocationArrow /></div>
 
-
-          <div className='progressContainer'>
-            <div className='progresslabel'>
-              <p>0</p>
-              <p>50</p>
-              <p>100</p>
-
+              <p>{clima.current?.wind_dir}</p>
             </div>
-            <ProgressBar now={clima.current?.humidity} />
-            <span>%</span>
+          </div>
+
+          <div className={styles.humiContainer}>
+            <p className={styles.weatherTitle}>Humidity</p>
+            <p className={styles.weatherInfo}>{clima.current?.humidity} <span>%</span></p>
+
+
+            <div className='progressContainer'>
+              <div className='progresslabel'>
+                <p>0</p>
+                <p>50</p>
+                <p>100</p>
+
+              </div>
+              <ProgressBar now={clima.current?.humidity} />
+              <span>%</span>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <div className={styles.second}>
+        <div className={styles.visibilityContainer}>
+            <p className={styles.weatherTitle}>Visibility</p>
+            <p className={styles.weatherInfo}>{clima.current?.vis_miles} <span>miles</span></p>
+          </div>
+
+          <div className={styles.pressureContainer}>
+            <p className={styles.weatherTitle}>Air Pressure</p>
+            <p className={styles.weatherInfo}>{clima.current?.pressure_mb} <span>mb</span></p>
           </div>
         </div>
 
-        <div className={styles.visibilityContainer}>
-          <p className={styles.weatherTitle}>Visibility</p>
-          <p className={styles.weatherInfo}>{clima.current?.vis_miles} <span>miles</span></p>
-
-
-        </div>
-        <div className={styles.pressureContainer}>
-          <p className={styles.weatherTitle}>Air Pressure</p>
-          <p className={styles.weatherInfo}>{clima.current?.pressure_mb} <span>mb</span></p>
-
-
-        </div>
       </div>
 
 
