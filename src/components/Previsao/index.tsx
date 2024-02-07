@@ -34,7 +34,7 @@ interface PrevisaoDia {
 interface PrevisaoProps {
   previsoesHoras: PrevisaoHora[];
   previsoesDias: PrevisaoDia[];
-  clima: ClimaActualProps;
+  clima: ClimaActualProps["clima"];
 }
 
 
