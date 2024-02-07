@@ -38,3 +38,45 @@
     color: #e7e7eb;
   }
 }
+
+.histContener {
+  margin-top: 90px;
+  margin-left: 50px;
+  color: #e7e7eb;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  justify-content: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  div {
+    width: 367px;
+    height: 64px;
+    padding-left: 10px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    svg {
+      display: none;
+    }
+    
+  }
+
+  div:hover {
+    border: 1px solid #616475;
+    cursor: pointer;
+    svg {
+      display: inline;
+    }
+  }
+}

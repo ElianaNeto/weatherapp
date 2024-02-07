@@ -16,6 +16,7 @@ export default function Home() {
 
   const [cidade, setCidade] = useState("");
   const [clima, setClima] = useState({});
+  const [historico, setHistorco] = useState<string[]>([]);
   const [previsaoDias, setPrevisaoDias] = useState([])
   const [previsaoHoras, setPrevisaoHoras] = useState([])
   const [showBusca, setShowBusca] = useState(false);
@@ -60,6 +61,8 @@ export default function Home() {
       setClima(respostaClima.data)
       setPrevisaoDias(respostaPrevisao.data.forecast.forecastday.slice(1, 6))
       setPrevisaoHoras(respostaPrevisao.data.forecast.forecastday?.[0].hour.slice(0, 5))
+      const newCity = [...historico, cidade]
+      setHistorco(newCity);
       setShowBusca(false)
     } catch (error) {
       console.log("Erro ao buscar clima: ", error)
@@ -68,12 +71,13 @@ export default function Home() {
   };
   console.log(clima)
   console.log(previsaoDias)
+  console.log("historico: " + historico)
   //console.log(previsaoHoras)
 
   return (
     <div className={styles.mainContaner}>
       <div className={styles.secondContainer}>
-        <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} open={showBusca} onClose={handleBusca} />
+        <Busca cidade={cidade} historico={historico} setCidade={setCidade} buscarClima={buscarClima} open={showBusca} onClose={handleBusca} />
         <div className={`${"modal"} ${!showBusca ? "display-block" : "display-none"}`}>
           <div className='buscaDiv'>
             <button className={styles.btnShowBusca} onClick={handleBusca}>Seach for places</button>
