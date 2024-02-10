@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Image from 'next/image'
 import styles from './styles.module.scss'
-import { getDayOfWeek, getMonthName, removeDot } from '@/utils/modules/date'
+import { getDayOfWeek, getIconByCode, getMonthName, removeDot } from '@/utils/modules/date'
 import { ClimaActualProps } from '../ClimaActual';
 import { FaLocationArrow } from 'react-icons/fa';
 import ProgressBar from 'react-bootstrap/ProgressBar';
@@ -27,6 +27,7 @@ interface PrevisaoDia {
     condition: {
       icon: string;
       text: string;
+      code: number;
     };
   };
 }
@@ -43,6 +44,9 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
   // const [tempUnit, setTempUnit] = useState('tempC');
   const { tempUnit } = useContext(AuthContenxt)
   const { handleChangeTempUnit } = useContext(AuthContenxt)
+
+  
+
 
 
   console.log(tempUnit)
@@ -76,11 +80,14 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
       </div>
       <ul>
         { //Proximos dias
+          
           previsoesDias.map((prev, index) => (
 
             <li key={index}>
               <span>{getDayOfWeek(prev.date)} </span>
-              <Image src={'https:' + prev.day.condition.icon} alt={prev.day.condition.text} width={64} height={64} />
+              {/*<Image src={'https:' + prev.day.condition.icon} alt={prev.day.condition.text} width={64} height={64} />*/}
+              <Image src={`/icons/day/${getIconByCode(prev.day.condition.code)}.svg`} alt={prev.day.condition.text} width={64} height={64} />
+
               {
                 tempUnit === 'tempC' ?
                   <div className={styles.tempContainer}>

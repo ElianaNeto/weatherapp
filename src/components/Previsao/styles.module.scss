@@ -15,9 +15,15 @@
     padding: 0;
     display: flex;
     margin-left: 120px;
-    margin-top: 80px;
+    margin-top: 120px;
     flex-direction: row;
     justify-content: flex-start;
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+      margin-left: 10px;
+      justify-content: center;
+    }
   }
 
   li {
@@ -36,7 +42,7 @@
     img {
       margin-right: 10px;
       width: 56.44px;
-      height: 62px;
+      height: 80px;
     }
   }
 
@@ -103,7 +109,6 @@
     @media screen and (max-width: 768px) {
       display: flex;
       flex-direction: column;
-      
 
       //flex-wrap: wrap; // Permitir que os itens quebrem para a próxima linha
     }
@@ -149,7 +154,7 @@
 
     @media screen and (max-width: 768px) {
       margin-bottom: 40px;
-     }
+    }
 
     .windDir {
       display: flex;
@@ -201,10 +206,8 @@
 
     @media screen and (max-width: 768px) {
       margin-bottom: 40px;
-     }
+    }
   }
-
-  
 }
 
 .tempUnit {

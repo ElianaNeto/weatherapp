@@ -3,10 +3,8 @@ import Image from 'next/image'
 import styles from './styles.module.scss'
 import { FaLocationDot } from "react-icons/fa6";
 import night from '../../../public/icons/nigth/113.svg'
-import { getDayOfWeek, getMonthName, removeDot } from '@/utils/modules/date'
+import { getDayOfWeek, getIconByCode, getMonthName, removeDot } from '@/utils/modules/date'
 import { AuthContenxt } from '@/contexts/AuthContext';
-
-import weatherCondition from '../../utils/data/weather_conditions.json'
 
 
 
@@ -59,39 +57,19 @@ export interface ClimaActualProps {
 export function ClimaActual({ clima }: ClimaActualProps) {
 
   const { tempUnit } = useContext(AuthContenxt)
-  console.log("cclima actual temp: " + tempUnit)
-  console.log(clima.current?.condition.icon)
 
   const code = clima.current?.condition.code
+  const timeFolder = clima.current?.is_day === 1 ? 'day' : 'nigth'
+  const path = `/icons/${timeFolder}/${getIconByCode(code)}.svg`
 
-
-  const timeFolder = clima.current?.is_day === 1 ? 'day' : 'night'
-
-  console.log('is day? ' + timeFolder)
-
-  function getIconByCode(x: number | undefined) {
-    const condition = weatherCondition;
-
-    for (let i = 0; i < condition.length; i++) {
-      if (condition[i].code === x) {
-        return condition[i].icon;
-      }
-    }
-    return null;
-  }
-
-  console.log(getIconByCode(code));
-  const path = `../../../public/icons/${timeFolder}/${getIconByCode(code)}.svg`
-  console.log(path)
 
   return (
     <div className={styles.containerActual}>
       {clima.location && clima.current ? (
         <>
-          <Image src={'https:' + clima.current.condition.icon} alt={clima.current.condition.text} width={202} height={234} />
+          {/*<Image src={'https:' + clima.current.condition.icon} alt={clima.current.condition.text} width={202} height={234} />*/}
 
-          {/*<Image src='../../public/icons/day/113.svg' alt={clima.current.condition.text} width={202} height={234} />*/}
-
+          <Image src={path} alt={clima.current.condition.text} width={212} height={254} />
 
           {
             tempUnit === 'tempC'

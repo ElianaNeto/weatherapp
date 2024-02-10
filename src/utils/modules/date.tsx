@@ -1,3 +1,5 @@
+import weatherCondition from '../../utils/data/weather_conditions.json'
+
 export function getDayOfWeek(dateString: string): string {
   const days: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -44,3 +46,15 @@ function windDirectionTo16Point(windDirection: number): string {
 const windDirection = 120; // Wind direction in degrees (0 to 360)
 const compassDirection = windDirectionTo16Point(windDirection);
 console.log(compassDirection); // Output: 'ESE'
+
+
+export function getIconByCode(x: number | undefined) {
+  const condition = weatherCondition;
+
+  for (let i = 0; i < condition.length; i++) {
+    if (condition[i].code === x) {
+      return condition[i].icon;
+    }
+  }
+  return null;
+}
