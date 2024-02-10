@@ -50,7 +50,7 @@ export default function Home() {
 
   useEffect(() => {
     handleLocation();
-  }, [apikey])
+  }, )
 
 
   const buscarClima = async () => {
