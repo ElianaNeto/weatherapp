@@ -24,16 +24,16 @@ export function Busca({ cidade, historico, setCidade, buscarClima, open, onClose
             <button className={styles.busca} onClick={buscarClima}>Search</button>
           </div>
         </div>
-        <div className={styles.histContener}>
-          
-            {
-              historico.map((item, index) => (
-                <button key={index} onClick={()=>setCidade(item)}>
-                  {item}
-                 <IoIosArrowForward />
-                </button>
-              ))
-            }
+        <div className={styles.histContainer}>
+
+          {
+            historico.map((item, index) => (
+              <button key={index} onClick={() => setCidade(item)}>
+                {item}
+                <IoIosArrowForward />
+              </button>
+            ))
+          }
         </div>
 
       </div>

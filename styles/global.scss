@@ -59,14 +59,26 @@
   //align-items: center;
   width: 459px;
   height: 694px;
+  @media screen and (max-width: 768px) {
+  width: 100%;
+    
+}
 }
 
 .modal.display-block {
   display: block;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+      
+  }
 }
 
 .modal.display-none {
   display: none;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+      
+  }
 }
 
 :root {

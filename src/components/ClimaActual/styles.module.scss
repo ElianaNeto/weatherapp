@@ -10,7 +10,13 @@
     font-size: 40px;
     font-weight: bold;
     margin-top: 50%;
+    color: #e7e7eb;
+
    }
+
+   @media screen and (max-width: 768px) {
+    width: 100%; // Tornar a largura igual à largura da tela
+  }
 
 }
 
