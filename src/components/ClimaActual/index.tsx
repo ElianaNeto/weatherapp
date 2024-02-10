@@ -7,7 +7,6 @@ import { getDayOfWeek, getIconByCode, getMonthName, removeDot } from '@/utils/mo
 import { AuthContenxt } from '@/contexts/AuthContext';
 
 
-
 export interface Condition {
   icon: string;
   text: string;
