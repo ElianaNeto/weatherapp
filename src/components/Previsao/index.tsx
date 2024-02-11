@@ -45,11 +45,6 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
   const { tempUnit } = useContext(AuthContenxt)
   const { handleChangeTempUnit } = useContext(AuthContenxt)
 
-  
-
-
-
-  console.log(tempUnit)
 
   return (
     <div className={styles.containerPrevisao}>

@@ -43,9 +43,9 @@ function windDirectionTo16Point(windDirection: number): string {
 }
 
 // Example usage:
-const windDirection = 120; // Wind direction in degrees (0 to 360)
-const compassDirection = windDirectionTo16Point(windDirection);
-console.log(compassDirection); // Output: 'ESE'
+//const windDirection = 120; // Wind direction in degrees (0 to 360)
+//const compassDirection = windDirectionTo16Point(windDirection);
+//console.log(compassDirection); // Output: 'ESE'
 
 
 export function getIconByCode(x: number | undefined) {

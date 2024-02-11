@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import Image from 'next/image'
 import styles from './styles.module.scss'
 import { FaLocationDot } from "react-icons/fa6";
-import night from '../../../public/icons/nigth/113.svg'
 import { getDayOfWeek, getIconByCode, getMonthName, removeDot } from '@/utils/modules/date'
 import { AuthContenxt } from '@/contexts/AuthContext';
 

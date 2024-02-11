@@ -23,15 +23,13 @@ export default function Home() {
   const apikey = process.env.NEXT_PUBLIC_API_KEY;
 
 
-  console.log(apikey);
-
   const handleBusca = () => {
     setShowBusca(!showBusca);
   }
 
   const handleLocation = async () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
-      console.log(position)
+     
       const lat = position.coords.latitude
       const lon = position.coords.longitude
 
@@ -39,7 +37,6 @@ export default function Home() {
       const respostaDef = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}&aqi=no`)
       const respostaPrevisaoDef = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${lat},${lon}&days=10&aqi=no&alerts=no`)
 
-      console.log(respostaDef.data)
       setCidade(respostaDef.data.location.name);
       setClima(respostaDef.data)
       setPrevisaoDias(respostaPrevisaoDef.data.forecast.forecastday.slice(1, 6))
@@ -69,9 +66,9 @@ export default function Home() {
     }
 
   };
-  console.log(clima)
-  console.log(previsaoDias)
-  console.log("historico: " + historico)
+  //console.log(clima)
+  //console.log(previsaoDias)
+  //console.log("historico: " + historico)
   //console.log(previsaoHoras)
 
   return (
