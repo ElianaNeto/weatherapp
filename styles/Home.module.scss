@@ -2,9 +2,7 @@
   //background: linear-gradient(to bottom, #89cff0, #005c99);
   //color: #fff;
   display: flex;
-  //height: 100vh;
   width: 100%;
-  //background-color: red;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -21,11 +19,10 @@
   width: 459px;
   //height: 520px;
   float: left;
-  //background-color: aquamarine;
   background-color: #1e213a;
   @media screen and (max-width: 768px) {
-    width: 100%; // Tornar a largura igual à largura da tela
-    float: none; // Remover o float
+    width: 100%; 
+    float: none; 
   }
 }
 
