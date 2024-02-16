@@ -20,7 +20,6 @@ export default function Home() {
   const [previsaoDias, setPrevisaoDias] = useState([])
   const [previsaoHoras, setPrevisaoHoras] = useState([])
   const [showBusca, setShowBusca] = useState(false);
-  const apikey = process.env.NEXT_PUBLIC_API_KEY;
 
 
   const handleBusca = () => {
@@ -29,7 +28,7 @@ export default function Home() {
 
   const handleLocation = async () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
-     
+      const apikey = process.env.NEXT_PUBLIC_API_KEY;
       const lat = position.coords.latitude
       const lon = position.coords.longitude
 
@@ -47,12 +46,14 @@ export default function Home() {
 
 
   useEffect(() => {
-    //handleLocation();
-  }, )
+    handleLocation();
+  },)
 
 
   const buscarClima = async () => {
     try {
+      const apikey = process.env.NEXT_PUBLIC_API_KEY;
+
       const respostaClima = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cidade}&aqi=no`)
       const respostaPrevisao = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${cidade}&days=7&aqi=no&alerts=no`)
       setClima(respostaClima.data)
