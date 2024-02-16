@@ -7,10 +7,6 @@ import { Previsao } from '@/components/Previsao';
 import { ClimaActual } from '@/components/ClimaActual';
 import { MdMyLocation } from "react-icons/md";
 
-import dotenv from 'dotenv';
-
-dotenv.config();
-
 
 export default function Home() {
 
@@ -46,7 +42,7 @@ export default function Home() {
 
 
   useEffect(() => {
-    handleLocation();
+    //handleLocation();
   },)
 
 
