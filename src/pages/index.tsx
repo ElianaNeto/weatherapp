@@ -48,12 +48,6 @@ export default function Home() {
     })
   }
 
-
-  useEffect(() => {
-    handleLocation();
-  },)
-
-
   const buscarClima = async () => {
     try {
       const apikey = process.env.NEXT_PUBLIC_API_KEY;
