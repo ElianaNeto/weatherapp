@@ -1,4 +1,3 @@
-"use client"
 import styles from '../../styles/Home.module.scss'
 
 import { useState, useEffect, } from 'react';
@@ -43,7 +42,7 @@ export default function Home() {
 
 
   useEffect(() => {
-    //handleLocation();
+    handleLocation();
   },)
 
 
