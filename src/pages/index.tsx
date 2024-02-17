@@ -1,11 +1,10 @@
 import styles from '../../styles/Home.module.scss'
-
 import { useState, useEffect, } from 'react';
-import axios from 'axios';
 import { Busca } from '@/components/Busca';
 import { Previsao } from '@/components/Previsao';
 import { ClimaActual } from '@/components/ClimaActual';
 import { MdMyLocation } from "react-icons/md";
+import { api } from '@/services/api';
 
 
 export default function Home() {
@@ -29,16 +28,8 @@ export default function Home() {
       const lon = position.coords.longitude
 
       //usar a localizaco
-      const respostaDef = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}&aqi=no`, {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
-      const respostaPrevisaoDef = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${lat},${lon}&days=10&aqi=no&alerts=no`, {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
+      const respostaDef = await api.get(`/current.json?key=${apikey}&q=${lat},${lon}&aqi=no`)
+      const respostaPrevisaoDef = await api.get(`/forecast.json?key=${apikey}&q=${lat},${lon}&days=10&aqi=no&alerts=no`)
 
       setCidade(respostaDef.data.location.name);
       setClima(respostaDef.data)
@@ -52,12 +43,8 @@ export default function Home() {
     try {
       const apikey = process.env.NEXT_PUBLIC_API_KEY;
 
-      const respostaClima = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cidade}&aqi=no`, { headers: {
-        'Access-Control-Allow-Origin': '*'
-      }})
-      const respostaPrevisao = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${cidade}&days=7&aqi=no&alerts=no`, { headers: {
-        'Access-Control-Allow-Origin': '*'
-      }})
+      const respostaClima = await api.get(`/current.json?key=${apikey}&q=${cidade}&aqi=no`)
+      const respostaPrevisao = await api.get(`/forecast.json?key=${apikey}&q=${cidade}&days=7&aqi=no&alerts=no`)
       setClima(respostaClima.data)
       setPrevisaoDias(respostaPrevisao.data.forecast.forecastday.slice(1, 6))
       setPrevisaoHoras(respostaPrevisao.data.forecast.forecastday?.[0].hour.slice(0, 5))
@@ -69,10 +56,6 @@ export default function Home() {
     }
 
   };
-  //console.log(clima)
-  //console.log(previsaoDias)
-  //console.log("historico: " + historico)
-  //console.log(previsaoHoras)
 
   return (
     <div className={styles.mainContaner}>

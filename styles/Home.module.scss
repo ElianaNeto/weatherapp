@@ -1,6 +1,4 @@
 .mainContaner {
-  //background: linear-gradient(to bottom, #89cff0, #005c99);
-  //color: #fff;
   display: flex;
   width: 100%;
   box-sizing: border-box;
@@ -17,7 +15,6 @@
 
 .secondContainer {
   width: 459px;
-  //height: 520px;
   float: left;
   background-color: #1e213a;
   @media screen and (max-width: 768px) {
@@ -53,7 +50,6 @@
   border: none;
   // Estilos adicionais para telas menores que 768px
   @media screen and (max-width: 767px) {
-    //width: 100%; // Tornar a largura igual à largura da tela
-    margin-top: 10px; // Adicionar um espaçamento superior
+    margin-top: 10px; 
   }
 }
