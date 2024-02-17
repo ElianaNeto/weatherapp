@@ -29,8 +29,16 @@ export default function Home() {
       const lon = position.coords.longitude
 
       //usar a localizaco
-      const respostaDef = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}&aqi=no`)
-      const respostaPrevisaoDef = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${lat},${lon}&days=10&aqi=no&alerts=no`)
+      const respostaDef = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}&aqi=no`, {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+      const respostaPrevisaoDef = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${lat},${lon}&days=10&aqi=no&alerts=no`, {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
 
       setCidade(respostaDef.data.location.name);
       setClima(respostaDef.data)
@@ -50,8 +58,12 @@ export default function Home() {
     try {
       const apikey = process.env.NEXT_PUBLIC_API_KEY;
 
-      const respostaClima = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cidade}&aqi=no`)
-      const respostaPrevisao = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${cidade}&days=7&aqi=no&alerts=no`)
+      const respostaClima = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cidade}&aqi=no`, { headers: {
+        'Access-Control-Allow-Origin': '*'
+      }})
+      const respostaPrevisao = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${cidade}&days=7&aqi=no&alerts=no`, { headers: {
+        'Access-Control-Allow-Origin': '*'
+      }})
       setClima(respostaClima.data)
       setPrevisaoDias(respostaPrevisao.data.forecast.forecastday.slice(1, 6))
       setPrevisaoHoras(respostaPrevisao.data.forecast.forecastday?.[0].hour.slice(0, 5))
