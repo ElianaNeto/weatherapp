@@ -5,7 +5,6 @@ import { FaLocationDot } from "react-icons/fa6";
 import { getDayOfWeek, getIconByCode, getMonthName, removeDot } from '@/utils/modules/date'
 import { AuthContenxt } from '@/contexts/AuthContext';
 
-
 export interface Condition {
   icon: string;
   text: string;
@@ -51,24 +50,18 @@ export interface ClimaActualProps {
   };
 }
 
-
 export function ClimaActual({ clima }: ClimaActualProps) {
 
   const { tempUnit } = useContext(AuthContenxt)
-
   const code = clima.current?.condition.code
   const timeFolder = clima.current?.is_day === 1 ? 'day' : 'nigth'
   const path = `/icons/${timeFolder}/${getIconByCode(code)}.svg`
-
 
   return (
     <div className={styles.containerActual}>
       {clima.location && clima.current ? (
         <>
-          {/*<Image src={'https:' + clima.current.condition.icon} alt={clima.current.condition.text} width={202} height={234} />*/}
-
           <Image src={path} alt={clima.current.condition.text} width={212} height={254} />
-
           {
             tempUnit === 'tempC'
               ?

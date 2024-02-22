@@ -16,7 +16,6 @@ export default function Home() {
   const [previsaoHoras, setPrevisaoHoras] = useState([])
   const [showBusca, setShowBusca] = useState(false);
 
-
   const handleBusca = () => {
     setShowBusca(!showBusca);
   }
@@ -58,7 +57,7 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.mainContaner}>
+    <div className={styles.mainContainer}>
       <div className={styles.secondContainer}>
         <Busca cidade={cidade} historico={historico} setCidade={setCidade} buscarClima={buscarClima} open={showBusca} onClose={handleBusca} />
         <div className={`${"modal"} ${!showBusca ? "display-block" : "display-none"}`}>

@@ -7,7 +7,6 @@ import { FaLocationArrow } from 'react-icons/fa';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { AuthContenxt } from '@/contexts/AuthContext';
 
-
 interface PrevisaoHora {
   time: string;
   temp_c: number;
@@ -40,15 +39,11 @@ interface PrevisaoProps {
 
 
 export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps) {
-
-  // const [tempUnit, setTempUnit] = useState('tempC');
   const { tempUnit } = useContext(AuthContenxt)
   const { handleChangeTempUnit } = useContext(AuthContenxt)
 
-
   return (
     <div className={styles.containerPrevisao}>
-      {/*<h4>Previsao para os proximos dias</h4>*/}
       <div className={styles.tempUnit}>
         <button
           type="button"
@@ -71,18 +66,15 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
             color: tempUnit === 'tempF' ? '#110E3C' : '#e7e7eb'
           }}
         >°F</button>
-
       </div>
       <ul>
         { //Proximos dias
-          
+
           previsoesDias.map((prev, index) => (
 
             <li key={index}>
               <span>{getDayOfWeek(prev.date)} </span>
-              {/*<Image src={'https:' + prev.day.condition.icon} alt={prev.day.condition.text} width={64} height={64} />*/}
               <Image src={`/icons/day/${getIconByCode(prev.day.condition.code)}.svg`} alt={prev.day.condition.text} width={64} height={64} />
-
               {
                 tempUnit === 'tempC' ?
                   <div className={styles.tempContainer}>
@@ -95,7 +87,6 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
                     <p className={styles.tempMin}>{removeDot(prev.day.mintemp_f)}°F</p>
                   </div>
               }
-
             </li>
           ))
         }
@@ -106,14 +97,11 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
         <div className={styles.first}>
           <div className={styles.windContainer}>
             <p className={styles.weatherTitle}>Wind status</p>
-
             <p className={styles.weatherInfo}>{clima.current?.wind_mph} <span>mph</span></p>
-
-
             <div className={styles.windDir}>
-              <div
-                style={{ transform: `rotate(${clima.current?.wind_degree}deg)` }}><FaLocationArrow /></div>
-
+              <div style={{ transform: `rotate(${clima.current?.wind_degree}deg)` }}>
+                <FaLocationArrow />
+              </div>
               <p>{clima.current?.wind_dir}</p>
             </div>
           </div>
@@ -121,25 +109,20 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
           <div className={styles.humiContainer}>
             <p className={styles.weatherTitle}>Humidity</p>
             <p className={styles.weatherInfo}>{clima.current?.humidity} <span>%</span></p>
-
-
             <div className='progressContainer'>
               <div className='progresslabel'>
                 <p>0</p>
                 <p>50</p>
                 <p>100</p>
-
               </div>
               <ProgressBar now={clima.current?.humidity} />
               <span>%</span>
             </div>
           </div>
-
-          
         </div>
 
         <div className={styles.second}>
-        <div className={styles.visibilityContainer}>
+          <div className={styles.visibilityContainer}>
             <p className={styles.weatherTitle}>Visibility</p>
             <p className={styles.weatherInfo}>{clima.current?.vis_miles} <span>miles</span></p>
           </div>
@@ -149,12 +132,7 @@ export function Previsao({ previsoesHoras, previsoesDias, clima }: PrevisaoProps
             <p className={styles.weatherInfo}>{clima.current?.pressure_mb} <span>mb</span></p>
           </div>
         </div>
-
       </div>
-
-
     </div>
-
-
   )
 }

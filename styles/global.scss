@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Raleway';
-  src: url('/fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-VariableFont_wght.ttf") format("truetype");
 }
 
 * {
@@ -60,16 +60,14 @@
   width: 459px;
   height: 694px;
   @media screen and (max-width: 768px) {
-  width: 100%;
-    
-}
+    width: 100%;
+  }
 }
 
 .modal.display-block {
   display: block;
   @media screen and (max-width: 768px) {
     width: 100%;
-      
   }
 }
 
@@ -77,7 +75,6 @@
   display: none;
   @media screen and (max-width: 768px) {
     width: 100%;
-      
   }
 }
 
@@ -88,9 +85,6 @@
   --dark-900: #101026;
   --dark-700: #1d1d2e;
 
-  --gray-100: #8a8a8a;
-  --green-900: #3fffa3;
-  --red-900: #ff3f4b;
 }
 
 button {
