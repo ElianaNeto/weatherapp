@@ -10,7 +10,7 @@ import { api } from '@/services/api';
 export default function Home() {
 
   const [cidade, setCidade] = useState("");
-  const [clima, setClima] = useState({});
+  const [dadosDoClima, setDadosDoClima] = useState({});
   const [historico, setHistorco] = useState<string[]>([]);
   const [previsaoDias, setPrevisaoDias] = useState([])
   const [previsaoHoras, setPrevisaoHoras] = useState([])
@@ -31,7 +31,7 @@ export default function Home() {
       const respostaPrevisaoDef = await api.get(`/forecast.json?key=${apikey}&q=${lat},${lon}&days=10&aqi=no&alerts=no`)
 
       setCidade(respostaDef.data.location.name);
-      setClima(respostaDef.data)
+      setDadosDoClima(respostaDef.data)
       setPrevisaoDias(respostaPrevisaoDef.data.forecast.forecastday.slice(1, 6))
       setPrevisaoHoras(respostaPrevisaoDef.data.forecast.forecastday?.[0].hour.slice(0, 5))
 
@@ -44,7 +44,7 @@ export default function Home() {
 
       const respostaClima = await api.get(`/current.json?key=${apikey}&q=${cidade}&aqi=no`)
       const respostaPrevisao = await api.get(`/forecast.json?key=${apikey}&q=${cidade}&days=7&aqi=no&alerts=no`)
-      setClima(respostaClima.data)
+      setDadosDoClima(respostaClima.data)
       setPrevisaoDias(respostaPrevisao.data.forecast.forecastday.slice(1, 6))
       setPrevisaoHoras(respostaPrevisao.data.forecast.forecastday?.[0].hour.slice(0, 5))
       const newCity = [...historico, cidade]
@@ -68,13 +68,13 @@ export default function Home() {
 
         </div>
         {
-          showBusca === false && (
-            <ClimaActual clima={clima} />
+          !showBusca && dadosDoClima && (
+            <ClimaActual clima={dadosDoClima} />
           )
         }
 
       </div>
-      <Previsao previsoesHoras={previsaoHoras} previsoesDias={previsaoDias} clima={clima} />
+      <Previsao previsoesHoras={previsaoHoras} previsoesDias={previsaoDias} clima={dadosDoClima} />
     </div>
   )
 }
