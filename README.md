@@ -8,11 +8,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://weatherapp-indol-gamma.vercel.app/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/ElianaNeto/weatherapp">
+    <a href="https://legacy.devchallenges.io/solutions/PhtDpuqsTdpJ7NMppj2q">
       Solution
     </a>
     <span> | </span>
