@@ -62,7 +62,7 @@ export default function Home() {
         <Busca cidade={cidade} historico={historico} setCidade={setCidade} buscarClima={buscarClima} open={showBusca} onClose={handleBusca} />
         <div className={`${"modal"} ${!showBusca ? "display-block" : "display-none"}`}>
           <div className='buscaDiv'>
-            <button className={styles.btnShowBusca} onClick={handleBusca}>Seach for places</button>
+            <button className={styles.btnShowBusca} onClick={handleBusca}>Search for places</button>
             <button className={styles.realLocation} onClick={handleLocation}><MdMyLocation /></button>
           </div>
 
